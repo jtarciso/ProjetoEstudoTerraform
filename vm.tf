@@ -6,8 +6,7 @@ resource "azurerm_windows_virtual_machine" "vm-win10" {
   size                = "Standard_DS1_v2"
   admin_username      = "azadmin "
   admin_password      = "Conectenuvem@123"
-  network_interface_ids = [
-    element(azurerm_network_interface.nic-vm.*.id, count.index+1)]
+  network_interface_ids = [azurerm_network_interface.nic-vm[count.index].id]
 
   os_disk {
     caching              = "ReadWrite"
